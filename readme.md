@@ -75,5 +75,24 @@ python test.py \
 > * has_key 相關的抱報錯，需要去報錯的地方將 code 改為 if XXX in dict 的 Python 3 語法。
 
 ### 訓練 L-GCN w/ RIWS
+* 在此步驟前如還沒有 knn 的資料檔請將 feature.npy 經過 L-GCN with RIWS 內的 tools/get_knn.py 處理後取其中的 index 檔案
+* 此部分 train.py 在 L-GCN with RIWS/imbalance_gcn 資料夾內
+
+```sh
+python train.py \
+--feat_path {feature.npy 路徑} \
+--knn_graph_path {knn_index.npy 路徑} \
+--labels_path {label.npy 路徑}
+```
 
 ### 執行 L-GCN w/ RIWS
+* 在此步驟前如還沒有 knn 的資料檔請將 feature.npy 經過 L-GCN with RIWS 內的 tools/get_knn.py 處理後取其中的 index 檔案
+* 此部分 test.py 在 L-GCN with RIWS/imbalance_gcn 資料夾內
+
+```sh
+python test.py \
+--val_feat_path {feature.npy 路徑} \
+--val_knn_graph_path {knn_index.npy 路徑} \
+--val_labels_path {label.npy 路徑} \
+--checkpoint {訓練出的模型檔}
+```
