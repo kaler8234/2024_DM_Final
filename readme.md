@@ -40,6 +40,21 @@ python3 tools/get_knn.py \
         --feats_file {此處填入 feature.npy 的路徑} \
         --topk 40
 ```
+    這邊的輸出會產生3個檔案，需要的為 XXX_knn_index.npy 或類似字眼的檔案。
+
+### 訓練 L-GCN
+1. Clone L-GCN Github Repo
+```sh
+git clone https://github.com/Zhongdao/gcn_clustering.git
+```
+2. 執行 Train
+```sh
+cd gcn_clustering
+python train.py \
+--feat_path {feature.npy 路徑} \
+--knn_graph_path {knn_index.npy 路徑} \
+--labels_path {label.npy 路徑}
+```
 
 ### 執行 L-GCN
 1. Clone L-GCN Github Repo
@@ -53,4 +68,12 @@ python test.py \
 --val_feat_path {feature.npy 路徑} \
 --val_knn_graph_path {knn_index.npy 路徑} \
 --val_label_path {label.npy 路徑} \
+--checkpoint {訓練出的模型檔}
 ```
+
+> 在 L-GCN 這塊，由於原本的版本是 Python 2.7，直接使用 Python 3 的環境，部分舊版 Func 可能會報錯，下面是目前有遇過的問題。
+> * has_key 相關的抱報錯，需要去報錯的地方將 code 改為 if XXX in dict 的 Python 3 語法。
+
+### 訓練 L-GCN w/ RIWS
+
+### 執行 L-GCN w/ RIWS
