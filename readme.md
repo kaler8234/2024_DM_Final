@@ -13,6 +13,8 @@
 
 ### 資料集處理
 #### python 環境
+* 下方跑 L-GCN 與 L-GCN w/ RIWS 皆可用同一環境
+
 1. 用 miniconda 開虛擬環境
 ```sh
 conda create -n LGCN python==3.6
